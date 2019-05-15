@@ -4,25 +4,7 @@
             <div class="row no-spacing">
                 <!-- hero -->
                 <section class="col-lg-8 no-spacing section hero">
-                    <!-- <div class="carousel js-carousel">
-                        <div class="img-cover carousel-item">
-                            <a href="#" class="img-cover__wrapper">
-                                <img src="images/73.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="img-cover carousel-item">
-                            <a href="#" class="img-cover__wrapper">
-                                <img src="images/75.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="img-cover carousel-item">
-                            <a href="#" class="img-cover__wrapper">
-                                <img src="images/bannner-26-thang-3_78.jpg" alt="">
-                            </a>
-                        </div>
-                        
-                    </div> -->
-                    <carousel :per-page="1" :navigationEnabled="true" :mouse-drag="false">
+                    <carousel :per-page="1" :navigationEnabled="true" :mouse-drag="false" :loop="true">
                         <slide>
                             <img src="@/assets/images/73.jpg" alt="">
                         </slide>
@@ -70,6 +52,10 @@ img {
 }
 .VueCarousel-navigation-prev {
     left: 30px !important;
+}
+.VueCarousel-pagination {
+    position: absolute;
+    bottom: 10px;
 }
 </style>
 
