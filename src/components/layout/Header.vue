@@ -29,56 +29,16 @@
                         <li class="nav-item">
                             <a href="" class="nav-link"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Giới thiệu</a>
-                            <!-- <ul>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Giới thiệu cuộc thi</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Hướng dẫn đăng ký</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Hướng dẫn thi</a>
-                                </li>
-                            </ul> -->
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Thông báo BTC</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Tra cứu</a>
-                            <!-- <ul>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Danh sách thí sinh</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Kết quả</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Bảng xếp hạng</a>
-                                </li>
-                            </ul> -->
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Thể lệ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Văn bản</a>
-                            <!-- <ul>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Thông báo</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Tài liệu tham khảo</a>
-                                </li>
-                            </ul> -->
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Lịnh thi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">Liên hệ</a>
+                        <li class="nav-item" v-for="(item, index) in data" :key="index" :class="[item.children.length ? 'dropdown' : '']">
+                            <a href="" class="nav-link">{{ item.title }}</a>
+                            <template v-if="item.children">
+                                <ul class="sub-menu">
+                                    <li class="nav-item" v-for="(child, key) in item.children" :key="key">
+                                        <a href="" class="nav-link">{{ child.title }}</a>
+                                    </li>
+                                </ul>
+                            </template>
+                            
                         </li>
                     </ul>
                 </div>
@@ -88,9 +48,18 @@
 
     </header>
 </template>
+
 <script>
 export default {
-    
+    name: 'Header',
+    data() {
+        return {
+            data: menu
+        }
+    },
+    created() {
+        console.log(this.data);
+    }
 }
 </script>
 <style>
