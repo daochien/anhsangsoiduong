@@ -2,36 +2,12 @@
     <div class="col-12">
         <!-- timeline -->
         <section class="section timeline">
-            <h2 class="headline"><a href="">Timeline cuộc thi</a></h2>
+            <h2 class="headline"><a href="">Timeline hội thi</a></h2>
             <ul class="timeline-list">
-                <li class="item active">
+                <li class="item" v-for="(item, index) in items" :key="index" :class="[index == lastItem ? 'item-new' : '']">
                     <div class="inner">
-                        <div class="title">thi thử</div>
-                        <div class="date">26/02 - 02/03</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="inner">
-                        <div class="title">Tuần 1</div>
-                        <div class="date">02/10 - 08/10</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="inner">
-                        <div class="title">Tuần 3</div>
-                        <div class="date">16/10 - 22/10</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="inner">
-                        <div class="title">Tuần 4</div>
-                        <div class="date">23/10 - 29/10</div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="inner">
-                        <div class="title">Tuần 5</div>
-                        <div class="date">30/10 - 05/11</div>
+                        <div class="title">{{ item.name }}</div>
+                        <div class="date" v-html="item.date"></div>
                     </div>
                 </li>
             </ul>
@@ -48,7 +24,19 @@
 </template>
 <script>
 export default {
-    name: 'TimeLine'
+    name: 'TimeLine',
+    data() {
+        return {
+            items: timeline
+        }
+    },
+    computed: {
+        lastItem() {
+            return Object.keys(this.items).length-1
+        }
+    },
+    created() {
+    }
 }
 </script>
 <style lang="scss" scoped>

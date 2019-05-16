@@ -1,6 +1,6 @@
 <template>
-    <div class="mobile-menu" @click="addClassBody">
-        <div class="nav-trigger js-trigger">
+    <div class="mobile-menu" >
+        <div class="nav-trigger js-trigger" @click="addClassBody">
 			<span class="bar"></span>
 			<span class="bar"></span>
 			<span class="bar"></span>
@@ -16,56 +16,16 @@
 						<li class="nav-item">
 							<a href="" class="nav-link">Trang chủ</a>
 						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link">Giới thiệu</a>
-							<!-- <ul>
-								<li class="nav-item">
-									<a href="" class="nav-link">Giới thiệu cuộc thi</a>
-								</li>
-								<li class="nav-item">
-									<a href="" class="nav-link">Hướng dẫn đăng ký</a>
-								</li>
-								<li class="nav-item">
-									<a href="" class="nav-link">Hướng dẫn thi</a>
-								</li>
-							</ul> -->
-						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link">Thông báo BTC</a>
-						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link">Tra cứu</a>
-							<!-- <ul>
-								<li class="nav-item">
-									<a href="" class="nav-link">Danh sách thí sinh</a>
-								</li>
-								<li class="nav-item">
-									<a href="" class="nav-link">Kết quả</a>
-								</li>
-								<li class="nav-item">
-									<a href="" class="nav-link">Bảng xếp hạng</a>
-								</li>
-							</ul> -->
-						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link">Thể lệ</a>
-						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link">Văn bản</a>
-							<!-- <ul>
-								<li class="nav-item">
-									<a href="" class="nav-link">Thông báo</a>
-								</li>
-								<li class="nav-item">
-									<a href="" class="nav-link">Tài liệu tham khảo</a>
-								</li>
-							</ul> -->
-						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link">Lịnh thi</a>
-						</li>
-						<li class="nav-item">
-							<a href="" class="nav-link">Liên hệ</a>
+						<li class="nav-item" v-for="(item, index) in data" :key="index" :class="[item.children.length ? 'dropdown' : '', isActiveMenu == index ? 'dropdown-active' : '']" @click.prevent="activeMenu(index)">
+							<a href="" class="nav-link">{{ item.title }}</a>
+							<template v-if="item.children">
+                                <ul class="sub-menu">
+                                    <li class="nav-item" v-for="(child, key) in item.children" :key="key">
+                                        <a href="" class="nav-link">{{ child.title }}</a>
+                                    </li>
+                                </ul>
+                            </template>
+							
 						</li>
 					</ul>
 				</nav>
@@ -82,7 +42,9 @@ export default {
     name: 'MobileMenu',
     data() {
         return {
-            isActive: false
+            isActive: false,
+			data: menu,
+			isActiveMenu: 'a'
         }
     },
     methods: {
@@ -94,8 +56,15 @@ export default {
             } else {
                 el.classList.remove('active-slideout');
             }
-
-        }
+		},
+		activeMenu(index) {
+			if(this.isActiveMenu == index ) {
+				this.isActiveMenu = 'a';
+			} else {
+				this.isActiveMenu = index;
+			}
+			
+		}
     }
 }
 </script>

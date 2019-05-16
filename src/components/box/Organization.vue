@@ -7,45 +7,13 @@
                     <section class="organizations">
                         <h2 class="headline">ĐƠN VỊ TỔ CHỨC</h2>
                         <ul class="list js-carousel-01">
-                            <carousel :per-page="4" :loop="true" :autoplay="true" :navigationEnabled="false" :mouse-drag="true" :paginationEnabled="false">
-                                <slide>
-                                    <a class="wrapper" href="">
+                            <carousel :per-page="showItem" :loop="true" :autoplay="true" :navigationEnabled="false" :mouse-drag="true" :paginationEnabled="false">
+                                <slide v-for="(item, index) in items" :key="index">
+                                    <a class="wrapper" :href="item.url">
                                         <div class="img">
-                                            <img src="@/assets/images/doan-tncs.png" alt="">
+                                            <img :src="item.src" :alt="item.name">
                                         </div>
-                                        <h3 class="name">Trung ương Đoàn TNCS Hồ Chí Minh</h3>
-                                    </a>
-                                </slide>
-                                <slide>
-                                    <a class="wrapper" href="">
-                                        <div class="img">
-                                            <img src="@/assets/images/doan-tncs.png" alt="">
-                                        </div>
-                                        <h3 class="name">Trung ương Đoàn TNCS Hồ Chí Minh</h3>
-                                    </a>
-                                </slide>
-                                <slide>
-                                    <a class="wrapper" href="">
-                                        <div class="img">
-                                            <img src="@/assets/images/doan-tncs.png" alt="">
-                                        </div>
-                                        <h3 class="name">Trung ương Đoàn TNCS Hồ Chí Minh</h3>
-                                    </a>
-                                </slide>
-                                <slide>
-                                    <a class="wrapper" href="">
-                                        <div class="img">
-                                            <img src="@/assets/images/doan-tncs.png" alt="">
-                                        </div>
-                                        <h3 class="name">Trung ương Đoàn TNCS Hồ Chí Minh</h3>
-                                    </a>
-                                </slide>
-                                <slide>
-                                    <a class="wrapper" href="">
-                                        <div class="img">
-                                            <img src="@/assets/images/doan-tncs.png" alt="">
-                                        </div>
-                                        <h3 class="name">Trung ương Đoàn TNCS Hồ Chí Minh</h3>
+                                        <h3 class="name">{{ item.name }}</h3>
                                     </a>
                                 </slide>
                             </carousel>
@@ -78,11 +46,30 @@
 </template>
 <script>
 import { Carousel, Slide } from 'vue-carousel';
+import { myMixin } from '@/mixins/mixins.js';
 export default {
     name: 'Organization',
+    mixins: [myMixin], 
     components: {
         Carousel,
         Slide
+    },
+    data() {
+        return {
+            items: dvtc
+        }
+    },
+    computed: {
+        showItem() {
+            if(this.isMobile()) {
+                return 1;
+            } else {
+                return 4;
+            }
+        }
+    },
+    created() {
+        console.log(this.isMobile());
     }
 }
 </script>

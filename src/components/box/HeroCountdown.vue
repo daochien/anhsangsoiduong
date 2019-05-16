@@ -4,22 +4,16 @@
             <div class="row no-spacing">
                 <!-- hero -->
                 <section class="col-lg-8 no-spacing section hero">
-                    <carousel :per-page="1" :navigationEnabled="true" :mouse-drag="false" :loop="true">
-                        <slide>
-                            <img src="@/assets/images/73.jpg" alt="">
-                        </slide>
-                        <slide>
-                            <img src="@/assets/images/75.jpg" alt="">
-                        </slide>
-                        <slide>
-                            <img src="@/assets/images/bannner-26-thang-3_78.jpg" alt="">
+                    <carousel :per-page="1" :navigationEnabled="true" :autoplay="true" :mouse-drag="false" :loop="true">
+                        <slide v-for="(item, index) in itemSlide" :key="index">
+                            <img :src="item.src" :alt="item.title">
                         </slide>
                     </carousel>
                 </section>
                 <!-- hero end -->
                 <!-- Countdown clock -->
                 <section class="col-lg-4 no-spacing section countdown-clock">
-                    <h2 class="headline">Hộ thi ánh sáng soi đường</h2>
+                    <h2 class="headline">Hội thi ánh sáng soi đường</h2>
                     <div data-minutes="600000"></div>
                     <div class="button-group">
                         <a class="btn" href="">Vào thi</a>
@@ -37,7 +31,12 @@ export default {
     name: 'HeroCountdown',
     components: {
         Carousel, Slide
-    },    
+    },
+    data() {
+        return {
+            itemSlide: banner
+        }
+    }    
 }
 </script>
 <style scoped>
