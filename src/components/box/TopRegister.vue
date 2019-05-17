@@ -6,60 +6,32 @@
                 <div class="wrapper">
                     <h2 class="headline">Top thí sinh đăng ký</h2>
                     <div class="tab js-tab" >
-                        <div class="tab-item " :class="{active: !isActive}" @click="isActive = !isActive"> 
-                            <div class="title">Sở GD & ĐT Tỉnh/TP</div>
+                        <div class="tab-item " :class="{active: !isActive}" > 
+                            <div class="title" @click="isActive = !isActive">Sở GD & ĐT Tỉnh/TP</div>
                             <ul class="list">
-                                <li class="list-item">
-                                    <div class="number">01</div>
+                                <li class="list-item" v-for="(city, index) in data.city" :key="index">
+                                    <div class="number">{{ index + 1 }}</div>
                                     <div class="info">
-                                        <div class="number-user">180356 <span>thí sinh</span></div>
-                                        <div class="address">Phú Thọ</div>
-                                    </div>
-                                </li>
-                                <li class="list-item">
-                                    <div class="number">02</div>
-                                    <div class="info">
-                                        <div class="number-user">92297 <span>thí sinh</span></div>
-                                        <div class="address">Hà Nội</div>
-                                    </div>
-                                </li>
-                                <li class="list-item">
-                                    <div class="number">03</div>
-                                    <div class="info">
-                                        <div class="number-user">92297 <span>thí sinh</span></div>
-                                        <div class="address">Thái Nguyên</div>
+                                        <div class="number-user">{{city.sum}} <span>thí sinh</span></div>
+                                        <div class="address">{{city.name}}</div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div class="tab-item" :class="{active: isActive}" @click="isActive = !isActive">
-                            <div class="title">Trường</div>
+                        <div class="tab-item" :class="{active: isActive}" >
+                            <div class="title" @click="isActive = !isActive">Trường</div>
                             <ul class="list">
-                                <li class="list-item">
-                                    <div class="number">01</div>
+                                <li class="list-item" v-for="(school, index) in data.school" :key="index">
+                                    <div class="number">{{ index + 1 }}</div>
                                     <div class="info">
-                                        <div class="number-user">180356 <span>thí sinh</span></div>
-                                        <div class="address">THPT Lưu Nhân Chú, Đại Từ</div>
-                                    </div>
-                                </li>
-                                <li class="list-item">
-                                    <div class="number">02</div>
-                                    <div class="info">
-                                        <div class="number-user">92297 <span>thí sinh</span></div>
-                                        <div class="address">Trường Đại Học Nguyễn Tất Thành</div>
-                                    </div>
-                                </li>
-                                <li class="list-item">
-                                    <div class="number">03</div>
-                                    <div class="info">
-                                        <div class="number-user">92297 <span>thí sinh</span></div>
-                                        <div class="address">THPT Lý Thái Tổ</div>
+                                        <div class="number-user">{{school.sum}} <span>thí sinh</span></div>
+                                        <div class="address">{{school.name}}</div>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <a href="" class="btn btn-light">Xem thêm</a>
+                    <!-- <a href="" class="btn btn-light">Xem thêm</a> -->
                 </div>
             </div>
         </section>
@@ -71,9 +43,10 @@ export default {
     name: 'TopRegister',
     data() {
         return {
-            isActive: false
+            isActive: false,
+            data: topRegister
         }
-    }
+    },
 }
 </script>
 <style>
