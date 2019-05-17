@@ -6,20 +6,18 @@ const routes = [
     {
         path: '/',
         component: () => import('@/components/pages/Home.vue'),
-        redirect: '/home',
-        name: 'app',
-        children: [
-            {
-                path: 'home',
-                name: 'Home',
-                component: () => import('@/components/pages/Home.vue')
-            },
-            {
-                path: 'news',
-                name: 'News',
-                component: () => import('@/components/pages/New.vue')
-            }
-        ]
+        name: 'home',
+        
+    },
+    {
+        path: '/news',
+        name: 'PageNews',
+        component: () => import('@/components/pages/news/New.vue'),        
+    },
+    {
+        path: '/news/news-detail',
+        name: 'NewsDetail',
+        component: () => import('@/components/pages/news/NewDetail.vue')
     },
     
 ];

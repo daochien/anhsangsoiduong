@@ -6,9 +6,16 @@
                 <organization></organization>
                 <time-line></time-line>
                 <notify></notify>
-                <top-register></top-register>
-                <top-exam></top-exam>
-                <top-week></top-week>
+                <div class="col-lg-4">
+                    <top-register></top-register>
+                </div>
+                <div class="col-lg-4">
+                    <top-exam></top-exam>
+                </div>
+                <div class="col-lg-4">
+                    <top-week></top-week>
+                </div>
+                
                 <hot-news></hot-news>
                 <event></event>
                 <collection></collection>

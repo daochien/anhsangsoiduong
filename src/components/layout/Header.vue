@@ -30,11 +30,12 @@
                             <a href="" class="nav-link"><i class="fa fa-home"></i></a>
                         </li>
                         <li class="nav-item" v-for="(item, index) in data" :key="index" :class="[item.children.length ? 'dropdown' : '']">
-                            <a href="" class="nav-link">{{ item.title }}</a>
+                            
+                            <router-link :to="{path: '/' + item.type }" class="nav-link">{{ item.title }} </router-link>
                             <template v-if="item.children">
                                 <ul class="sub-menu">
                                     <li class="nav-item" v-for="(child, key) in item.children" :key="key">
-                                        <a href="" class="nav-link">{{ child.title }}</a>
+                                        <router-link :to="{path: '/'+child.type }" class="nav-link">{{ child.title }} </router-link>
                                     </li>
                                 </ul>
                             </template>

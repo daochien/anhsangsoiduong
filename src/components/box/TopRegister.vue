@@ -1,6 +1,6 @@
 <template>
-    <div class="col-lg-4">
-        <!-- rating -->
+    
+    <!-- rating -->
         <section class="section rating v1">
             <div class="rating-item">
                 <div class="wrapper">
@@ -36,7 +36,6 @@
             </div>
         </section>
         <!-- rating end -->
-    </div>
 </template>
 <script>
 export default {
