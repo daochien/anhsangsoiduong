@@ -10,13 +10,13 @@ const routes = [
         
     },
     {
-        path: '/news',
-        name: 'PageNews',
+        path: '/tin-tuc',
+        name: 'news',
         component: () => import('@/components/pages/news/New.vue'),        
     },
     {
-        path: '/news/news-detail',
-        name: 'NewsDetail',
+        path: '/tin-tuc/:slug-:id.html',
+        name: 'newsDetail',
         component: () => import('@/components/pages/news/NewDetail.vue')
     },
     

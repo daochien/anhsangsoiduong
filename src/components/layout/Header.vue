@@ -23,15 +23,15 @@
             <div class="container">
                 <div class="wrapper">
                     <div class="branb">
-                        <a class="logo" href="http://"><img src="@/assets/images/logo.png" alt=""></a>
+                        <router-link class="logo" :to="{name: 'home'}"><img src="@/assets/images/logo.png" alt=""></router-link>
                     </div>
                     <ul class="nav js-navbar">
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="fa fa-home"></i></a>
+                            <router-link :to="{name: 'home'}" class="nav-link"><i class="fa fa-home"></i></router-link>
                         </li>
                         <li class="nav-item" v-for="(item, index) in data" :key="index" :class="[item.children.length ? 'dropdown' : '']">
                             
-                            <router-link :to="{path: '/' + item.type }" class="nav-link">{{ item.title }} </router-link>
+                            <router-link :to="{name: item.type }" class="nav-link">{{ item.title }} </router-link>
                             <template v-if="item.children">
                                 <ul class="sub-menu">
                                     <li class="nav-item" v-for="(child, key) in item.children" :key="key">

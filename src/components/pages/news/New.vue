@@ -13,17 +13,16 @@
                                 <figure class="news-item" v-for="(item, index) in news" :key="index">
                                     <div class="inner">
                                         <div class="img-cover">
-                                            <a href="#" class="img-cover__wrapper">
+                                            <router-link :to="{name: 'newsDetail', params: {slug: item.alias, id: item.id} }" class="img-cover__wrapper">
                                                 <img :src="item.avatar" alt="">
-                                            </a>
+                                            </router-link>
                                         </div>
                                         <div class="content">
                                             <h2 class="title">
-                                                <a href="">{{ item.title }}</a>
+                                                <router-link :to="{name: 'newsDetail', params: {slug: item.alias, id: item.id} }">{{ item.title }}</router-link>
                                             </h2>
                                             <div class="info">
                                                 <span class="date">{{ item.created_at }}</span>
-                                                
                                             </div>
                                             <div class="description">{{ item.summary }}</div>
                                             <div class="copyright"><i class="fa fa-graduation-cap"></i>{{ item.author }}</div>
